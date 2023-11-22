@@ -1,0 +1,123 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+		<title>Solar Panel Fault Detection</title>
+		<style>
+		  .chart-container {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+		  }
+		
+		  .chart-image {
+			max-width: 50%;
+			height: auto;
+		  }
+		
+		  .description-container {
+			max-width: 50%;
+			overflow: auto;
+		  }
+		
+		  .scrollable {
+			max-height: 400px;
+			overflow-y: scroll;
+		  }
+		  
+		</style>
+	</head>
+<body>
+	<nav class="navbar navbar-expand-lg" style="background-color: #00fcf4;">
+		<div class="container-fluid">
+		  <a class="navbar-brand" href="{% url 'home' %}">
+			<img src="{%static 'logo9.svg' %}" alt="Logo" width=60 height=60 style="border-radius: 50%;" >
+		  </a>
+		  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+			<div class="navbar-nav">
+			  <!-- <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a> -->
+			  <!-- <a class="nav-link" href="#">Features</a>
+			  <a class="nav-link disabled">Disabled</a> -->
+	  
+			  <!-- Other faults dropdown -->
+			  <div class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" id="otherFaultsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					Other faults
+				</a>
+				<ul class="dropdown-menu" aria-labelledby="otherFaultsDropdown">
+					<li><a class="dropdown-item" href="{% url 'other_faults' fault='F1' %}">Inverter fault</a></li>
+					<li><a class="dropdown-item" href="{% url 'other_faults' fault='F2' %}">Feedback Sensor fault</a></li>
+					<li><a class="dropdown-item" href="{% url 'other_faults' fault='F3' %}">Grid anomaly</a></li>
+					<li><a class="dropdown-item" href="{% url 'other_faults' fault='F4' %}">PV array mismatch: 10 to 20% nonhomogeneous partial shading</a></li>
+					<li><a class="dropdown-item" href="{% url 'other_faults' fault='F5' %}">PV array mismatch: 15% open circuit in PV array</a></li>
+					<li><a class="dropdown-item" href="{% url 'other_faults' fault='F6' %}">MPPT/IPPT controller fault</a></li>
+					<li><a class="dropdown-item" href="{% url 'other_faults' fault='F7' %}">Boost converter controller fault</a></li>
+				</ul>
+			 </div>
+			</div>
+		  </div>
+		</div>
+	  </nav>
+    <center><h2>Boost Converter Controller Fault in Solar Panel</h2></center>
+    <h3>Description</h3>
+    <p>A boost converter controller fault in a solar panel system refers to a malfunction or failure specifically in the boost converter controller. The boost converter is an electronic device used in solar panel systems to efficiently increase the voltage output from the solar panels.</p>
+    <p>A controller fault in the boost converter can occur due to various reasons, such as component failure, improper calibration, software issues, or electrical surges. When the controller is faulty, it can result in unstable voltage output, inefficient power conversion, or even complete system shutdown.</p>
+    <h3>Solution</h3>
+    <button onclick='toggleSolution()'>Show Solution</button>
+    <div id='solution' style='display: none;'>
+        <p>To address a boost converter controller fault in a solar panel system, the following steps can be taken:</p>
+        <ol>
+            <li>Check the boost converter controller for any visible signs of damage or loose connections.</li>
+            <li>Ensure that the controller is properly calibrated and configured according to the manufacturer's specifications.</li>
+            <li>Inspect the wiring connections between the boost converter and the solar panels to ensure they are secure and correctly connected.</li>
+            <li>If possible, reset the boost converter controller by turning it off and on again. This can sometimes resolve minor software or transient issues.</li>
+            <li>If the fault persists, consult the manufacturer's documentation or contact their technical support for further assistance. They can provide guidance on troubleshooting steps or arrange for repairs or replacement of the boost converter controller if necessary.</li>
+        </ol>
+    </div>
+    <script>
+        function toggleSolution() {
+            var solution = document.getElementById('solution');
+            if (solution.style.display === 'none') {
+                solution.style.display = 'block';
+            } else {
+                solution.style.display = 'none';
+            }
+        }
+    </script>
+
+
+
+
+	<footer style="background-color:#00fcf4;">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6">
+					<h4>About Us</h4>
+					<p>
+						Our collaborative project, the Solar Panel Fault Detection System, led by students Harsh Aswar, Himanshu Bendale, Parth Desai, and Hitesh Bamb under Dr. Chetan Aher's guidance, offers an advanced solution for accurately identifying and diagnosing faults in solar panels. By integrating cutting-edge technologies like machine learning and real-time monitoring, our system optimizes solar power systems, minimizing downtime and maximizing energy output.</p>
+				</div>
+				<div class="col-md-6">
+					<h4>Follow us on Social Media here</h4>
+					<ul class="social-media-list">
+					  <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+					  <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+					  <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+					  <li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+					  <li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+					  <li><a href="#" class="icon brands fa-codepen"><span class="label">Codepen</span></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+</body>
+</html>
